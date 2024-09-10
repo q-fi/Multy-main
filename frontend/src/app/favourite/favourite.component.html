@@ -1,0 +1,18 @@
+<div class="movie-container" *ngIf="user && user.movies.length > 0">
+  <div class="movie-list">
+    <div *ngFor="let movie of user.movies" class="movie-card">
+      <mat-card [routerLink]="['/movies/', movie.id]">
+        <mat-card-header>
+          <div mat-card-avatar class="movie-image">
+            <img [src]="movie.imageUrl" alt="Movie Poster" />
+          </div>
+          <mat-card-title>{{ movie.title }}</mat-card-title>
+          <mat-card-subtitle>{{ movie.genres.join(", ") }}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<div class="no-movies" *ngIf="user && user.movies.length === 0">
+  <p>No favorite movies added yet.</p>
+</div>

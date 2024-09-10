@@ -1,0 +1,47 @@
+<ng-container *ngIf="!isPublicRoute; else appLayout">
+  <div class="app-container">
+    <header class="header">
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="toggleSidenav()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="title">Multy</span>
+        <button mat-button class="logout" (click)="logout()">Logout</button>
+      </mat-toolbar>
+    </header>
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav #sidenav mode="side" style="background-color: #3f51b5">
+        <mat-nav-list class="mat-nav-list" style="background-color: #3f51b5">
+          <a
+            mat-list-item
+            routerLink="/home"
+            routerLinkActive="active"
+            (click)="closeSidenav()"
+            >Home</a
+          >
+          <a
+            mat-list-item
+            routerLink="/movies"
+            routerLinkActive="active"
+            (click)="closeSidenav()"
+            >Cartoons</a
+          >
+          <a
+            mat-list-item
+            routerLink="/favourite"
+            routerLinkActive="active"
+            (click)="closeSidenav()"
+            >Favourite</a
+          >
+        </mat-nav-list>
+      </mat-sidenav>
+      <router-outlet></router-outlet>
+    </mat-sidenav-container>
+    <footer class="footer">
+      <p>© 2024 ysxs</p>
+    </footer>
+  </div>
+</ng-container>
+<ng-template #appLayout>
+  <router-outlet></router-outlet>
+</ng-template>

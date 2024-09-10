@@ -1,0 +1,84 @@
+/* Container for the entire section */
+.movie-container {
+  padding: 20px;
+  text-align: center;
+  background: rgba(63, 81, 181);
+  h1 {
+    margin-bottom: 20px;
+  }
+}
+
+/* Movie list layout */
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Individual movie card */
+.movie-card {
+  flex: 1 1 300px; /* Allow flexbox to control the width and wrap */
+  max-width: 300px; /* Set a max width for the movie card */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle effect */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  padding: 15px;
+
+  &:hover {
+    transform: translateY(-5px); /* Apply a slight lift effect on hover */
+    cursor: pointer;
+  }
+
+  /* Mat-card elements inside the movie card */
+  mat-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+  }
+
+  /* Movie image avatar */
+  .movie-image {
+    min-width: 125px;
+    height: 200px; /* Set a fixed height for the image container */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* Movie title and subtitle styling */
+  mat-card-title,
+  mat-card-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    margin: px;
+    font-weight: bold;
+  }
+
+  /* Movie description */
+  mat-card-content {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.4;
+    flex-grow: 1;
+    padding: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Message when no favorite movies are added */
+.no-movies {
+  text-align: center;
+  font-size: 1.25rem;
+  margin-top: 40px;
+}

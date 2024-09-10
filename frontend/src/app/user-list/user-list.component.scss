@@ -1,0 +1,83 @@
+.user-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background: rgba(63, 81, 181);
+  border-radius: 10px;
+  font-weight: 800;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+
+  .search-field {
+    background: transparent;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 25px;
+
+    mat-form-field {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+    }
+  }
+
+  .user-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .user-info {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 15px;
+
+      .email {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .username {
+        font-size: 1.5rem;
+      }
+    }
+
+    .ban-checkbox {
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      mat-checkbox {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  mat-divider {
+    width: 100%;
+    max-width: 500px;
+    margin: 10px 0;
+  }
+}

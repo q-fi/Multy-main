@@ -1,0 +1,101 @@
+<ng-container *ngIf="paginatedMovies && paginatedMovies.movies.length > 0">
+  <div class="movie-card">
+    <div class="image-container">
+      <img
+        class="image"
+        [src]="paginatedMovies.movies[0].imageUrl"
+        [alt]="paginatedMovies.movies[0].title"
+      />
+      <h3 class="title">{{ paginatedMovies.movies[0].title }}</h3>
+      <div class="list">
+        <button (click)="backPage()" style="background: rgba(63, 81, 181, 0.8)">
+          <mat-icon [ngClass]="{ gray: page === 1 }"
+            >keyboard_arrow_left</mat-icon
+          >
+        </button>
+        <div class="page">{{ page }}/{{ paginatedMovies.totalCount }}</div>
+        <button (click)="nextPage()" style="background: rgba(63, 81, 181, 0.8)">
+          <mat-icon [ngClass]="{ gray: page === paginatedMovies.totalPages }"
+            >keyboard_arrow_right</mat-icon
+          >
+        </button>
+        <button
+          style="margin-top: 5px"
+          mat-raised-button
+          class="custom-button"
+          type="submit"
+          [routerLink]="['/movies/', paginatedMovies.movies[0].id]"
+        >
+          Cartoon Info
+        </button>
+      </div>
+    </div>
+    <div class="details-container">
+      <div class="info">
+        <p>
+          <strong>Genres:</strong>
+          {{ paginatedMovies.movies[0].genres.join(", ") }}
+        </p>
+        <p>
+          <strong>Description:</strong>
+          {{ paginatedMovies.movies[0].description }}
+        </p>
+        <p><strong>Rating:</strong> {{ paginatedMovies.movies[0].rating }}</p>
+        <p><strong>PEGI:</strong> {{ paginatedMovies.movies[0].pegi }}</p>
+        <p>
+          <strong>Duration:</strong> {{ paginatedMovies.movies[0].duration }}
+        </p>
+        <p><strong>Year:</strong> {{ paginatedMovies.movies[0].year }}</p>
+        <p>
+          <strong>Has Oscar:</strong>
+          {{ paginatedMovies.movies[0].hasOscar ? "Yes" : "No" }}
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div class="search-container" *ngIf="isAdmin()">
+  <button
+    style="background-color: green"
+    mat-raised-button
+    class="custom-button"
+    type="submit"
+    [routerLink]="['/movies/', 'add']"
+  >
+    Cartoon Add
+  </button>
+</div>
+
+<div class="search-container">
+  <h2>Cartoon Search</h2>
+  <div class="form">
+    <div class="checkbox-group">
+      <div *ngFor="let genre of genres">
+        <mat-checkbox
+          [checked]="selectedGenres.includes(genre)"
+          (change)="toggleGenreSelection(genre)"
+        >
+          {{ genre }}
+        </mat-checkbox>
+      </div>
+    </div>
+    <div class="checkbox-group">
+      <div *ngFor="let pegi of pegis">
+        <mat-checkbox
+          [checked]="selectedPegis.includes(pegi)"
+          (change)="togglePegiSelection(pegi)"
+        >
+          {{ pegi }}
+        </mat-checkbox>
+      </div>
+    </div>
+  </div>
+  <button
+    mat-raised-button
+    class="custom-button"
+    type="submit"
+    (click)="onSearch()"
+  >
+    Search
+  </button>
+</div>

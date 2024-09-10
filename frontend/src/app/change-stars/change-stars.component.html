@@ -1,0 +1,23 @@
+<div class="star-list">
+  <mat-form-field appearance="fill">
+    <input
+      matInput
+      placeholder="Search by name"
+      [(ngModel)]="searchText"
+      (ngModelChange)="applyFilter()"
+    />
+  </mat-form-field>
+  <button mat-raised-button class="custom-button" (click)="saveChanges()">
+    Save Changes
+  </button>
+  <ng-container *ngFor="let star of filteredStars; let i = index">
+    <div class="star-item">
+      <p>{{ star.fullname }}</p>
+      <button mat-icon-button color="primary" (click)="toggleStar(star)">
+        <mat-icon>{{
+          isStarSelected(star) ? "remove_circle" : "add_circle"
+        }}</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+</div>

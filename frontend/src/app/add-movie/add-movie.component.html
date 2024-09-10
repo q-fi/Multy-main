@@ -1,0 +1,129 @@
+<div class="form">
+  @if (movie) {
+  <div class="checkbox-group">
+    <div *ngFor="let genre of genres">
+      <mat-checkbox
+        [checked]="movie.genres.includes(genre)"
+        (change)="toggleGenreSelection(genre)"
+      >
+        {{ genre }}
+      </mat-checkbox>
+    </div>
+  </div>
+  <mat-error
+    *ngIf="movieForm.get('genres')?.errors"
+    style="font-size: 15px; margin-top: -22px"
+  >
+    Genre is required
+  </mat-error>
+  <div class="pegis">
+    <mat-radio-group
+      [(ngModel)]="movie.pegi"
+      (change)="changePegi($event.value)"
+    >
+      <mat-radio-button *ngFor="let pegi of pegis" [value]="pegi">
+        {{ pegi }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  }
+  <form [formGroup]="movieForm" (ngSubmit)="saveMovie()">
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="title"
+        placeholder="Enter title"
+      />
+      <mat-error
+        *ngIf="
+          movieForm.get('title')?.invalid && movieForm.get('title')?.touched
+        "
+      >
+        Title is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Year</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="year"
+        placeholder="Enter year"
+      />
+      <mat-error
+        *ngIf="movieForm.get('year')?.invalid && movieForm.get('year')?.touched"
+      >
+        Year is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Enter description"
+      ></textarea>
+      <mat-error
+        *ngIf="
+          movieForm.get('description')?.invalid &&
+          movieForm.get('description')?.touched
+        "
+      >
+        Description is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Minimum Rating</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="rating"
+        placeholder="Enter rating"
+      />
+      <mat-error
+        *ngIf="
+          movieForm.get('rating')?.invalid && movieForm.get('rating')?.touched
+        "
+      >
+        Rating is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Duration</mat-label>
+      <input
+        matInput
+        type="time"
+        formControlName="duration"
+        placeholder="Enter duration"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Poster URL</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="imageUrl"
+        placeholder="Enter poster image URL"
+      />
+    </mat-form-field>
+
+    <mat-checkbox formControlName="hasOscar"> Has Oscar </mat-checkbox>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      class="custom-button"
+      [disabled]="movieForm.invalid"
+    >
+      Save Changes
+    </button>
+  </form>
+</div>

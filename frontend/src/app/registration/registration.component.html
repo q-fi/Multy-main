@@ -1,0 +1,77 @@
+<form
+  class="registration-form"
+  [formGroup]="registrationForm"
+  (ngSubmit)="registerFormSubmit()"
+>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          formControlName="username"
+          placeholder="Enter your username"
+        />
+        <mat-error
+          *ngIf="registrationForm.get('username')?.hasError('required')"
+        >
+          Username is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          placeholder="Enter your email"
+        />
+        <mat-error *ngIf="registrationForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="registrationForm.get('email')?.hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          type="password"
+          placeholder="Enter your password"
+        />
+        <mat-error
+          *ngIf="registrationForm.get('password')?.hasError('required')"
+        >
+          Password is required
+        </mat-error>
+        <mat-error
+          *ngIf="registrationForm.get('password')?.hasError('minlength')"
+        >
+          Password must be at least 6 characters long
+        </mat-error>
+      </mat-form-field>
+      <div class="error" *ngIf="registrationError">
+        {{ registrationError }}
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="registrationForm.invalid"
+      >
+        Register
+      </button>
+    </mat-card-actions>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="goToLogin()">
+        Already have an account?
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

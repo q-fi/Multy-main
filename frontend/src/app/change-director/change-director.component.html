@@ -1,0 +1,25 @@
+<div class="director-list">
+  <mat-form-field appearance="fill">
+    <input
+      matInput
+      placeholder="Search by name"
+      [(ngModel)]="searchText"
+      (ngModelChange)="applyFilter()"
+    />
+  </mat-form-field>
+  <button mat-raised-button class="custom-button" (click)="saveChanges()">
+    Save Changes
+  </button>
+  <ng-container *ngFor="let director of filteredDirectors">
+    <div class="director-item">
+      <mat-radio-button
+        [value]="director"
+        color="primary"
+        (change)="onDirectorChange(director)"
+        [checked]="isDirectorSelected(director)"
+      >
+        {{ director.fullname }}
+      </mat-radio-button>
+    </div>
+  </ng-container>
+</div>

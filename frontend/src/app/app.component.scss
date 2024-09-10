@@ -1,0 +1,79 @@
+.app-container {
+  font-size: 3vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.mat-nav-list {
+  background-color: #fff;
+  padding: 0 20px;
+
+  a {
+    margin: 0 0 0 -20px;
+    display: flex;
+    align-items: center;
+    padding: 15px 5px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #f0f0f0;
+      color: #007bff;
+      border-left: 4px solid #007bff;
+    }
+
+    &.active {
+      background-color: #e0e0e0;
+      color: #007bff;
+      border-left: 4px solid #007bff;
+    }
+
+    mat-icon {
+      margin-right: 15px;
+    }
+  }
+}
+
+.title {
+  margin-left: 15px;
+}
+.logout {
+  position: absolute;
+  right: 15px;
+}
+
+.mat-nav-list {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 20px;
+  width: clamp(20vw, 13vw, 200px);
+  max-width: 15vw;
+  min-width: 10vw;
+}
+
+.header {
+  flex-shrink: 0;
+}
+
+.sidenav-container {
+  z-index: 10;
+  background-image: url("https://wallpapers.com/images/featured/minions-3wxim1i2egqb5my9.jpg");
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  flex: 1;
+  width: 100vw;
+}
+
+.footer {
+  flex-shrink: 0;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+}

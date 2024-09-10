@@ -1,0 +1,44 @@
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height as needed */
+
+  mat-card {
+    max-width: 400px;
+    width: 100%;
+
+    mat-card-header {
+      text-align: center;
+    }
+
+    mat-card-content {
+      display: flex;
+      flex-direction: column;
+
+      mat-form-field {
+        width: 100%;
+
+        input {
+          font-size: 16px;
+        }
+      }
+
+      mat-error,.error {
+        font-size: 12px;
+        color: red;
+        margin-top: 4px; 
+      }
+    }
+
+    mat-card-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

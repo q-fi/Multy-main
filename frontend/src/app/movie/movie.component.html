@@ -1,0 +1,72 @@
+<ng-container *ngIf="movie">
+  <div class="movie-container">
+    <div class="star-container">
+      <mat-icon *ngIf="isMovieAdded" (click)="removeFromFav()"> star </mat-icon>
+      <mat-icon *ngIf="!isMovieAdded" (click)="addToFav()">
+        star_border
+      </mat-icon>
+    </div>
+    <div class="movie-details">
+      <h2>{{ movie.title }}</h2>
+      <p>
+        <strong>Director:</strong> {{ movie.director?.fullname }}
+        <ng-container *ngIf="isModerator() || isAdmin()">
+          <button
+            mat-raised-button
+            class="custom-button"
+            [routerLink]="['/movies/', movie.id, 'edit', 'director']"
+          >
+            Change
+          </button>
+        </ng-container>
+      </p>
+      <p><strong>Genres:</strong> {{ movie.genres.join(", ") }}</p>
+      <p><strong>Description:</strong> {{ movie.description }}</p>
+      <p><strong>Rating:</strong> {{ movie.rating }}</p>
+      <p><strong>PEGI:</strong> {{ movie.pegi }}</p>
+      <p><strong>Duration:</strong> {{ movie.duration }}</p>
+      <p><strong>Year:</strong> {{ movie.year }}</p>
+      <p><strong>Has Oscar:</strong> {{ movie.hasOscar ? "Yes" : "No" }}</p>
+      <div>
+        <ng-container *ngIf="isModerator() || isAdmin()">
+          <button
+            mat-raised-button
+            class="custom-button"
+            [routerLink]="['/movies/', movie.id, 'edit', 'stars']"
+          >
+            +/-
+          </button>
+        </ng-container>
+        <strong>Stars:</strong>
+        <ul>
+          <li *ngFor="let star of movie.stars">
+            {{ star.fullname }} ({{
+              star.hasOscar ? "Oscar Winner" : "No Oscar"
+            }})
+          </li>
+        </ul>
+      </div>
+      <ng-container *ngIf="isModerator() || isAdmin()">
+        <button
+          mat-raised-button
+          class="custom-button"
+          [routerLink]="['/movies/', movie.id, 'edit']"
+        >
+          Edit
+        </button>
+      </ng-container>
+      <ng-container *ngIf="isAdmin()">
+        <button
+          mat-button
+          style="color: red"
+          (click)="openDeleteConfirmation()"
+        >
+          Delete
+        </button>
+      </ng-container>
+    </div>
+    <div class="movie-image">
+      <img [src]="movie.imageUrl" alt="Movie Poster" />
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,35 @@
+/* change-director.component.scss */
+
+.director-list {
+  display: flex;
+  flex-direction: column;
+  background: rgba(63, 81, 181);
+}
+
+.director-item {
+  margin-bottom: 8px;
+}
+.custom-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+
+  /* Default state */
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+
+  /* Hover state */
+  &:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+
+  /* Active/focus state */
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Focus outline */
+  }
+}
